@@ -2,6 +2,9 @@
 
 # ActsAsExplorable
 
-TODO
+## TODO
+- Fill this README file
+- Release v0.0.1 to rubygems
+- Generate YARD documentation
 
 This project rocks and uses MIT-LICENSE.
