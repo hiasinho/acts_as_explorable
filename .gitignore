@@ -1,3 +1,6 @@
-.bundle/
-log/*.log
-pkg/
+pkg/*
+*.gem
+.bundle
+nbproject/*
+Gemfile.lock
+bin
