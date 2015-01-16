@@ -25,3 +25,7 @@ else
 end
 
 gem 'rails', rails
+
+group :doc do
+  gem 'yard'
+end

@@ -10,10 +10,6 @@ describe ActsAsExplorable::Search do
   let(:toni) { create(:toni) }
   let(:fernando) { create(:fernando) }
 
-  before(:each) do
-    clean_database
-  end
-
   context "in:" do
     it "`first_name` should find by first name" do
       [zlatan, christiano]

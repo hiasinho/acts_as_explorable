@@ -11,12 +11,14 @@ Gem::Specification.new do |s|
   s.description = "Adds GitHub-like search function to your models"
   s.license     = "MIT"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.files                 = `git ls-files`.split("\n")
+  s.test_files            = `git ls-files -- {spec}/*`.split("\n")
+  s.require_paths         = ["lib"]
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_development_dependency "rspec"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "database_cleaner"
+  s.add_development_dependency "watchr"
 end
