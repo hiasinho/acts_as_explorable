@@ -1,9 +1,9 @@
 ActiveRecord::Migration.verbose = false
-ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 ActiveRecord::Base.logger = Logger.new(File.join(File.dirname(__FILE__), '../debug.log'))
 ActiveRecord::Base.logger.level = ENV['TRAVIS'] ? ::Logger::ERROR : ::Logger::DEBUG
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(version: 1) do
   create_table :players do |t|
     t.string :first_name
     t.string :last_name
@@ -23,14 +23,14 @@ class Player < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
   explorable in: [:first_name, :last_name, :position, :city, :club],
              sort: [:first_name, :last_name, :position, :city, :club, :created_at],
-             position: ['GK', 'MF', 'FW']
+             position: %w(GK MF FW)
 end
 
 class ArgumentsPlayer < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
   explorable in: [:first_name, :last_name, :position, :city, :club],
              sort: [:first_name, :last_name, :position, :city, :club, :created_at],
-             position: ['GK', 'MF', 'FW']
+             position: %w(GK MF FW)
 end
 
 class BlockPlayer < ActsAsExplorable::TestModelBase
@@ -39,7 +39,7 @@ class BlockPlayer < ActsAsExplorable::TestModelBase
     config.filters = {
       in: [:first_name, :last_name, :position, :city, :club],
       sort: [:first_name, :last_name, :position, :city, :club, :created_at],
-      position: ['GK', 'MF', 'FW']
+      position: %w(GK MF FW)
     }
   end
 end
@@ -48,9 +48,9 @@ class BlockPlayer < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
   explorable in: [:first_name, :last_name, :position, :city, :club],
              sort: [:first_name, :last_name, :position, :city, :club, :created_at],
-             position: ['GK', 'MF', 'FW']
+             position: %w(GK MF FW)
 
-  explorable do |config|
+  explorable do |_config|
 
   end
 end

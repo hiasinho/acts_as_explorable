@@ -1,3 +1,6 @@
+#
+# A String extension for ActsAsExplorable
+#
 class String
   # Converts the String into a Hash for ActsAsExplorable.
   #

@@ -14,7 +14,7 @@ require 'sqlite3'
 require 'factory_girl'
 require 'database_cleaner'
 
-Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

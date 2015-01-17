@@ -6,17 +6,16 @@ module ActsAsExplorable
   #   ActsAsExplorable::Parser.transform('Zlatan in:first_name')
   #   => { values: ["Zlatan"], params: { in: ["first_name"] } }
   class Parser
-
     attr_reader :values, :params, :props
 
     #
     # Returns a transformed query Hash using the given query string
     # @param query_string [String] A query string
-    # @param *keys [Array] An Array of transformation rules
+    # @param keys [Array] An Array of transformation rules
     #
     # @return [Hash] Transformed query
     def self.transform(query_string, *keys)
-      instance = self.new(query_string)
+      instance = new(query_string)
       instance.parse(*keys)
     end
 
@@ -27,7 +26,7 @@ module ActsAsExplorable
 
     #
     # Parses the query string
-    # @param *keys [Hash] An Array of transformation rules
+    # @param keys [Hash] An Array of transformation rules
     #
     # @return [Hash] Transformed query
     def parse(*keys)
@@ -58,6 +57,5 @@ module ActsAsExplorable
         end
       end
     end
-
   end
 end

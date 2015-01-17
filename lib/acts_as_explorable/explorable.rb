@@ -1,6 +1,5 @@
 module ActsAsExplorable
   module Explorable
-
     def self.extended(base)
       base.class_eval do
         def self.explorable?
@@ -37,7 +36,7 @@ module ActsAsExplorable
     #   allows to customize types and filters
     #
     # @yieldparam config The model class's {ActsAsExplorable::Configuration config}.
-    def explorable(filters = {}, &block)
+    def explorable(filters = {}, &_block)
       class_eval do
         def self.explorable?
           true
@@ -67,7 +66,7 @@ module ActsAsExplorable
     def explorable_set_filters(filters = {})
       ActsAsExplorable.filters = filters if filters.present?
 
-      ActsAsExplorable.filters.each_pair do |f, a|
+      ActsAsExplorable.filters.each_pair do |f, _a|
         ActsAsExplorable.filters[f].map!(&:downcase)
       end
 

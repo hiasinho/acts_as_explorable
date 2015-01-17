@@ -23,8 +23,7 @@ module ActsAsExplorable
       klass = Module.nesting.last.const_get('Element').const_get(type.to_s.camelize)
       instance = klass.new(query, model, type)
       rescue NameError
-        instance = DynamicFilter.new(query, model, type)
-      return instance
+        DynamicFilter.new(query, model, type)
     end
 
     def initialize(query, model, element_type = nil)
