@@ -40,7 +40,7 @@ module ActsAsExplorable
     attr_accessor :filters
 
     def initialize
-      @filters = {in: [], sort: []}
+      @filters = {}
     end
   end
 

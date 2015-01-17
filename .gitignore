@@ -8,6 +8,7 @@ doc/*
 *.gem
 *.lock
 .bundle
+.yardoc
 nbproject/*
 Gemfile.lock
 bin

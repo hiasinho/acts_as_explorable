@@ -21,9 +21,8 @@ describe ActsAsExplorable::Explorable do
     expect(Explorable).to be_explorable
   end
 
-  it "should be customizable through arguments" do
-    # puts create_player.inspect
-    # puts create_player(ArgumentsPlayer).inspect
+  it "should be customizable through a block" do
+    skip "TODO: This will be available in future versions"
   end
 
 end

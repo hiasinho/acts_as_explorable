@@ -20,15 +20,15 @@ module ActsAsExplorable
     #                  position: ['GK', 'MF', 'FW']
     #     end
     #
-    # Using a block:
+    # Using a block (TODO: This will be available in future versions):
     #
-    #     class Person < ActiveRecord::Base
+    #     class Player < ActiveRecord::Base
     #       extend ActsAsExplorable
     #       explorable do |config|
-    #         config.types = [:in, :sort]
     #         config.filters = {
-    #           in: [:first_name, :last_name, :city],
-    #           sort: [:first_name, :last_name, :city, :created_at]
+    #           in: [:first_name, :last_name, :position, :city, :club],
+    #           sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+    #           position: ['GK', 'MF', 'FW']
     #         }
     #       end
     #     end
@@ -50,6 +50,8 @@ module ActsAsExplorable
         explorable_set_filters filters
       end
     end
+
+    protected
 
     # Configure ActsAsExplorable's permitted filters per type in a model.
     #

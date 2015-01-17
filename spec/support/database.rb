@@ -35,6 +35,17 @@ end
 
 class BlockPlayer < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
+  explorable do |config|
+    config.filters = {
+      in: [:first_name, :last_name, :position, :city, :club],
+      sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+      position: ['GK', 'MF', 'FW']
+    }
+  end
+end
+
+class BlockPlayer < ActsAsExplorable::TestModelBase
+  extend ActsAsExplorable
   explorable in: [:first_name, :last_name, :position, :city, :club],
              sort: [:first_name, :last_name, :position, :city, :club, :created_at],
              position: ['GK', 'MF', 'FW']
