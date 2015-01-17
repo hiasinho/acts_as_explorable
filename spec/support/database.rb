@@ -15,19 +15,39 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 end
 
-class Player < ActiveRecord::Base
+class ActsAsExplorable::TestModelBase < ActiveRecord::Base
+  self.table_name = :players
+end
+
+class Player < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
   explorable in: [:first_name, :last_name, :position, :city, :club],
              sort: [:first_name, :last_name, :position, :city, :club, :created_at],
              position: ['GK', 'MF', 'FW']
 end
 
-class Explorable < ActiveRecord::Base
-  self.table_name = :players
+class ArgumentsPlayer < ActsAsExplorable::TestModelBase
+  extend ActsAsExplorable
+  explorable in: [:first_name, :last_name, :position, :city, :club],
+             sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+             position: ['GK', 'MF', 'FW']
+end
+
+class BlockPlayer < ActsAsExplorable::TestModelBase
+  extend ActsAsExplorable
+  explorable in: [:first_name, :last_name, :position, :city, :club],
+             sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+             position: ['GK', 'MF', 'FW']
+
+  explorable do |config|
+
+  end
+end
+
+class Explorable < ActsAsExplorable::TestModelBase
   extend ActsAsExplorable
   explorable
 end
 
-class NotExplorable < ActiveRecord::Base
-  self.table_name = :players
+class NotExplorable < ActsAsExplorable::TestModelBase
 end

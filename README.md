@@ -47,5 +47,6 @@ Acts as explorable is released under the [MIT License](http://www.opensource.org
 - Release v0.0.1 to rubygems
 
 ###v0.x
+- Add tests for postgres and mysql
 - Query string validation helper for use in forms
 - Use methods in addition to fields
