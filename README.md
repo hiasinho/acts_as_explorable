@@ -18,7 +18,7 @@ Acts As Explorable is a Ruby Gem specifically written for ActiveRecord models. I
 Just add the following to your Gemfile.
 
 ```ruby
-gem 'acts_as_explorable', '~> 0.1.0'
+gem 'acts_as_explorable', '~> 0.1.1'
 ```
 
 And follow that up with a ``bundle install``.
