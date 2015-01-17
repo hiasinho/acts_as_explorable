@@ -1,8 +1,15 @@
+*.log
+*.sqlite3
+.bundle
+.ruby-version
+.yarddoc
 pkg/*
 doc/*
 *.gem
+*.lock
 .bundle
 nbproject/*
 Gemfile.lock
 bin
 spec/*.log
+tmp

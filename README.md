@@ -1,6 +1,6 @@
 # Acts As Explorable
 
-[![Build Status](https://travis-ci.org/hiasinho/acts_as_explorable.svg?branch=develop)](https://travis-ci.org/hiasinho/acts_as_explorable)
+[![Build Status](https://travis-ci.org/hiasinho/acts_as_explorable.svg?branch=develop)](https://travis-ci.org/hiasinho/acts_as_explorable) [![Code Climate](https://codeclimate.com/github/hiasinho/acts_as_explorable/badges/gpa.svg)](https://codeclimate.com/github/hiasinho/acts_as_explorable) [![Inline docs](http://inch-ci.org/github/hiasinho/acts_as_explorable.svg?branch=develop)](http://inch-ci.org/github/hiasinho/acts_as_explorable)
 
 Acts As Explorable is a Ruby Gem specifically written for ActiveRecord models.
 

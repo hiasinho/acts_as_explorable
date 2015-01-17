@@ -14,12 +14,15 @@ Gem::Specification.new do |s|
   s.files                 = `git ls-files`.split("\n")
   s.test_files            = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths         = ["lib"]
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.0.0'
 
-  # s.add_development_dependency "byebug"
-  s.add_development_dependency "rspec"
+  s.add_runtime_dependency 'activerecord',  ['>= 4.0', '< 5']
+
+  s.add_development_dependency 'sqlite3'
+
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'rspec-its'
+  s.add_development_dependency 'rspec'
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "database_cleaner"
-  s.add_development_dependency "watchr"
+  s.add_development_dependency 'database_cleaner'
 end

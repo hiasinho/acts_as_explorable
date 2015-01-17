@@ -13,19 +13,27 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-rails_version = ENV['RAILS_VERSION'] || 'default'
+# rails_version = ENV['RAILS_VERSION'] || 'default'
 
-rails = case rails_version
-when 'master'
-  { :github => 'rails/rails'}
-when 'default'
-  '~> 4.1.0'
-else
-  "~> #{rails_version}"
-end
+# rails = case rails_version
+# when 'master'
+#   { :github => 'rails/rails'}
+# when 'default'
+#   '~> 4.1.0'
+# else
+#   "~> #{rails_version}"
+# end
 
-gem 'rails', rails
+# gem 'rails', rails
 
 group :doc do
   gem 'yard'
+end
+
+group :local_development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'appraisal'
+  gem 'rake'
+  gem 'byebug', platform: :mri_21
 end
