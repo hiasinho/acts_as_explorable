@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActsAsExplorable::Search do
+describe ActsAsExplorable::Query do
 
   let(:zlatan) { create(:zlatan) }
   let(:manuel) { create(:manuel) }

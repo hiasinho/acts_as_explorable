@@ -6,7 +6,7 @@ require 'acts_as_explorable/parser'
 require 'acts_as_explorable/ext/string'
 require 'acts_as_explorable/element'
 require 'acts_as_explorable/explorable'
-require 'acts_as_explorable/search'
+require 'acts_as_explorable/query'
 
 #
 # ActsAsExplorable Plugin
@@ -15,7 +15,7 @@ require 'acts_as_explorable/search'
 #
 module ActsAsExplorable
   def self.extended(base)
-    base.extend Search
+    base.extend Query
   end
 
   def self.method_missing(method_name, *args, &block)

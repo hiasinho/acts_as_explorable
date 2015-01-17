@@ -2,7 +2,7 @@ module ActsAsExplorable
   #
   # Adds the search scope to a model
   #
-  module Search
+  module Query
     #
     # Initiates a search with the given query string and returns an
     # <tt>ActiveRecord::Relation</tt> scope object.
@@ -18,11 +18,11 @@ module ActsAsExplorable
     #
     #   Foo.published.search("Foo Bar in:name,body sort:created_at-asc")
     #
-    # @param [String] query A query string
+    # @param [String] query_string A query string
     # @return [ActiveRecord::Relation] Returns an <tt>ActiveRecord::Relation</tt> scope object
     #
-    def search(query)
-      parts = ActsAsExplorable.filters.keys.map { |t| Element.build(t, query, self) }
+    def search(query_string)
+      parts = ActsAsExplorable.filters.keys.map { |t| Element.build(t, query_string, self) }
 
       result = all
 
