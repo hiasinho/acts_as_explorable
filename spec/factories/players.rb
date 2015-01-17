@@ -6,7 +6,7 @@ FactoryGirl.define do
     city "Paris"
     club "PSG"
 
-    factory :manuel do
+    factory :manuel, aliases: [:goalkeeper] do
       first_name "Manuel"
       last_name "Neuer"
       position "GK"
@@ -30,7 +30,7 @@ FactoryGirl.define do
       club "FC Augsburg"
     end
 
-    factory :christiano do
+    factory :christiano, aliases: [:forward] do
       first_name "Christiano"
       last_name "Ronaldo"
       position "FW"

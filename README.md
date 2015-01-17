@@ -42,6 +42,10 @@ Acts as explorable is released under the [MIT License](http://www.opensource.org
 
 ## TODO
 
+### v0.1
 - Fill this README file
 - Release v0.0.1 to rubygems
-- Generate YARD documentation
+
+###v0.x
+- Query string validation helper for use in forms
+- Use methods in addition to fields

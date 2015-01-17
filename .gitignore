@@ -5,3 +5,4 @@ doc/*
 nbproject/*
 Gemfile.lock
 bin
+spec/*.log

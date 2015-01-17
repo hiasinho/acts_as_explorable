@@ -5,11 +5,10 @@ end
 $LOAD_PATH << '.' unless $LOAD_PATH.include?('.')
 $LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 require 'logger'
-
 require 'sqlite3'
 require 'factory_girl'
-require 'acts_as_explorable'
 require 'database_cleaner'
+require 'acts_as_explorable'
 
 Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
 

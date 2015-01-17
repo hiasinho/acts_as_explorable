@@ -13,13 +13,11 @@ module ActsAsExplorable
     #
     # The plugin can be customized using parameters or through a `block`.
     #
-    #     class Person < ActiveRecord::Base
+    #     class Player < ActiveRecord::Base
     #       extend ActsAsExplorable
-    #       explorable types: { only: [:in, :sort] },
-    #                  filters: {
-    #                    in: [:first_name, :last_name, :city],
-    #                    sort: [:first_name, :last_name, :city, :created_at]
-    #                  }
+    #       explorable in: [:first_name, :last_name, :position, :city, :club],
+    #                  sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+    #                  position: ['GK', 'MF', 'FW']
     #     end
     #
     # Using a block:
@@ -39,20 +37,15 @@ module ActsAsExplorable
     #   allows to customize types and filters
     #
     # @yieldparam config The model class's {ActsAsExplorable::Configuration config}.
-    def explorable(types: {only: [], except: []}, filters: {}, &block)
-
+    def explorable(args = {}, &block)
       class_eval do
         def self.explorable?
           true
         end
       end
 
-      if block_given?
-        ActsAsExplorable.setup { |config| yield config }
-      else
-        explorable_types types
-        explorable_filters filters
-      end
+      explorable_types only: args.keys
+      explorable_filters args
     end
 
     # Configure ActsAsExplorable's permitted types in a model.
@@ -72,7 +65,7 @@ module ActsAsExplorable
       elsif except.present?
         ActsAsExplorable.types.reject! { |t| except.include?(t) }
       end
-      ActsAsExplorable.types
+      ActsAsExplorable.types.map!(&:downcase)
     end
 
     # Configure ActsAsExplorable's permitted filters per type in a model.
@@ -88,6 +81,11 @@ module ActsAsExplorable
     #
     def explorable_filters(filters = {})
       ActsAsExplorable.type_filters = filters if filters.present?
+
+      ActsAsExplorable.type_filters.each_pair do |f, a|
+        ActsAsExplorable.type_filters[f].map!(&:downcase)
+      end
+
       ActsAsExplorable.type_filters
     end
   end

@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.require_paths         = ["lib"]
   s.required_ruby_version = '>= 1.9.3'
 
+  # s.add_development_dependency "byebug"
   s.add_development_dependency "rspec"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   s.add_development_dependency "sqlite3"

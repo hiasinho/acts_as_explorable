@@ -1,5 +1,7 @@
 ActiveRecord::Migration.verbose = false
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
+ActiveRecord::Base.logger = Logger.new(File.join(File.dirname(__FILE__), '../debug.log'))
+ActiveRecord::Base.logger.level = ENV['TRAVIS'] ? ::Logger::ERROR : ::Logger::DEBUG
 
 ActiveRecord::Schema.define(:version => 1) do
   create_table :players do |t|
@@ -15,11 +17,9 @@ end
 
 class Player < ActiveRecord::Base
   extend ActsAsExplorable
-  explorable types: { only: [:in, :sort] },
-             filters: {
-               in: [:first_name, :last_name, :position, :city, :club],
-               sort: [:first_name, :last_name, :position, :city, :club, :created_at]
-             }
+  explorable in: [:first_name, :last_name, :position, :city, :club],
+             sort: [:first_name, :last_name, :position, :city, :club, :created_at],
+             position: ['GK', 'MF', 'FW']
 end
 
 class Explorable < ActiveRecord::Base

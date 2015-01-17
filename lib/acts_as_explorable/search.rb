@@ -19,10 +19,7 @@ module ActsAsExplorable
     # @return [ActiveRecord::Relation] Returns an <tt>ActiveRecord::Relation</tt> scope object
     #
     def search(query)
-      parts = ActsAsExplorable.types.map do |t|
-        Module.nesting.last.const_get('Element').const_get(t.to_s.camelize)
-              .new(query, self)
-      end
+      parts = ActsAsExplorable.types.map { |t| Element.build(t, query, self) }
 
       result = all
 

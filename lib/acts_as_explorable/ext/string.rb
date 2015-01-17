@@ -23,7 +23,7 @@ class String
       key, params = p.split(':').first.to_sym, p.split(':').last.split(',')
       next if !keys.flatten.include?(key) && !keys.empty?
       col[:params][key] ||= []
-      col[:params][key] = col[:params][key] | params
+      col[:params][key] = col[:params][key] | params.map(&:downcase)
     end
 
     col.except(:props)

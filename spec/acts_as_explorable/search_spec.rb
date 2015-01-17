@@ -1,4 +1,3 @@
-require 'acts_as_explorable'
 require 'spec_helper'
 
 describe ActsAsExplorable::Search do
