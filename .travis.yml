@@ -4,10 +4,6 @@ rvm:
   - 2.2
   - 2.0.0
   - rbx-2
-env:
-  - "RAILS_VERSION=4.2.0"
-  - "RAILS_VERSION=4.1.0"
-  - "RAILS_VERSION=4.0.0"
 
 gemfile:
   - gemfiles/activerecord_4.0.gemfile
