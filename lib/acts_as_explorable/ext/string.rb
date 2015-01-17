@@ -15,17 +15,7 @@ class String
   #
   # @return [Hash] Converted query
   def to_acts_as_explorable(*keys)
-    self.blank? ? return : col = { props: [], values: [], params: {} }
-
-    split(/\s+/).each { |q| q =~ /\w+:[\w,-]+/ ? col[:props] << q : col[:values] << q }
-
-    col[:props].each do |p|
-      key, params = p.split(':').first.to_sym, p.split(':').last.split(',')
-      next if !keys.flatten.include?(key) && !keys.empty?
-      col[:params][key] ||= []
-      col[:params][key] = col[:params][key] | params.map(&:downcase)
-    end
-
-    col.except(:props)
+    return nil if self.blank?
+    ActsAsExplorable::Parser.transform(self, *keys)
   end
 end

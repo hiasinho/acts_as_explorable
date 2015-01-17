@@ -2,13 +2,23 @@ require 'acts_as_explorable/element/base'
 require 'acts_as_explorable/element/in'
 require 'acts_as_explorable/element/sort'
 require 'acts_as_explorable/element/dynamic_filter'
-require 'acts_as_explorable/element/state'
 
 module ActsAsExplorable
   module Element
     attr_accessor :query_type, :model, :parameters, :query_string, :query_parts,
                   :full_query
 
+    #
+    # This method acts as a factory to build a concrete element
+    #
+    # @example
+    #   ActsAsExplorable::Element.build(:in, 'Zlatan in:first_name', Player)
+    #
+    # @param type [Symbol] The element type to be build
+    # @param query [String] The query string
+    # @param model [ActiveRecord::Base] Anactive record model
+    #
+    # @return [ActsAsExplorable::Element] A concrete element type
     def self.build(type, query, model)
       klass = Module.nesting.last.const_get('Element').const_get(type.to_s.camelize)
       instance = klass.new(query, model, type)
@@ -47,6 +57,10 @@ module ActsAsExplorable
       end
     end
 
+    #
+    # Returns the Arel table for the current model
+    #
+    # @return [Arel::Table] Arel table for the current model
     def table
       @model.arel_table
     end
@@ -59,6 +73,10 @@ module ActsAsExplorable
       @type.to_sym || self.class.name.demodulize.underscore.to_sym
     end
 
+    #
+    # Returns the customized filters
+    #
+    # @return [Hash] The customized filters
     def filters
       ActsAsExplorable.filters[type]
     end

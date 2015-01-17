@@ -1,4 +1,7 @@
 module ActsAsExplorable
+  #
+  # Adds the search scope to a model
+  #
   module Search
     #
     # Initiates a search with the given query string and returns an
