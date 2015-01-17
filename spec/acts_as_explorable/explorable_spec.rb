@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+def create_player(klass = Player, factory: :player)
+  klass.create(attributes_for(factory))
+end
+
 describe ActsAsExplorable::Explorable do
 
   let(:zlatan) { create(:zlatan) }
@@ -15,6 +19,11 @@ describe ActsAsExplorable::Explorable do
 
   it "should be explorable" do
     expect(Explorable).to be_explorable
+  end
+
+  it "should be customizable through arguments" do
+    # puts create_player.inspect
+    # puts create_player(ArgumentsPlayer).inspect
   end
 
 end

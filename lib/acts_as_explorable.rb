@@ -37,15 +37,10 @@ module ActsAsExplorable
   end
 
   class Configuration
-    attr_accessor :types, :type_filters
+    attr_accessor :filters
 
     def initialize
-      @types = [:in, :state, :sort]
-      @type_filters = {
-        in: [:title, :name, :body],
-        state: [:open, :closed],
-        sort: [:number, :state, :title, :name, :created_at]
-      }
+      @filters = {in: [], sort: []}
     end
   end
 

@@ -19,7 +19,7 @@ module ActsAsExplorable
     # @return [ActiveRecord::Relation] Returns an <tt>ActiveRecord::Relation</tt> scope object
     #
     def search(query)
-      parts = ActsAsExplorable.types.map { |t| Element.build(t, query, self) }
+      parts = ActsAsExplorable.filters.keys.map { |t| Element.build(t, query, self) }
 
       result = all
 

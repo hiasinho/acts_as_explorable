@@ -18,7 +18,7 @@ module ActsAsExplorable
     end
 
     def initialize(query, model, element_type = nil)
-      query = query.to_acts_as_explorable(ActsAsExplorable.types)
+      query = query.to_acts_as_explorable(ActsAsExplorable.filters.keys)
 
       @type = element_type if element_type
       @model = model
@@ -60,7 +60,7 @@ module ActsAsExplorable
     end
 
     def filters
-      ActsAsExplorable.type_filters[type]
+      ActsAsExplorable.filters[type]
     end
   end
 end

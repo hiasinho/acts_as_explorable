@@ -37,35 +37,18 @@ module ActsAsExplorable
     #   allows to customize types and filters
     #
     # @yieldparam config The model class's {ActsAsExplorable::Configuration config}.
-    def explorable(args = {}, &block)
+    def explorable(filters = {}, &block)
       class_eval do
         def self.explorable?
           true
         end
       end
 
-      explorable_types only: args.keys
-      explorable_filters args
-    end
-
-    # Configure ActsAsExplorable's permitted types in a model.
-    #
-    #     class Person < ActiveRecord::Base
-    #       extend ActsAsExplorable
-    #       explorable_types only: [:in, :sort]
-    #     end
-    #
-    # @option options [Array] :only ([]) Define permitted types
-    # @option options [Array] :except ([]) Exclude types
-    # @return [Array] Permitted types
-    #
-    def explorable_types(only: [], except: [])
-      if only.present?
-        ActsAsExplorable.types = only
-      elsif except.present?
-        ActsAsExplorable.types.reject! { |t| except.include?(t) }
+      if block_given?
+        ActsAsExplorable.setup { |config| yield config }
+      else
+        explorable_set_filters filters
       end
-      ActsAsExplorable.types.map!(&:downcase)
     end
 
     # Configure ActsAsExplorable's permitted filters per type in a model.
@@ -79,14 +62,14 @@ module ActsAsExplorable
     # @param [Hash] filters Filters for types
     # @return [Array] Permitted filters
     #
-    def explorable_filters(filters = {})
-      ActsAsExplorable.type_filters = filters if filters.present?
+    def explorable_set_filters(filters = {})
+      ActsAsExplorable.filters = filters if filters.present?
 
-      ActsAsExplorable.type_filters.each_pair do |f, a|
-        ActsAsExplorable.type_filters[f].map!(&:downcase)
+      ActsAsExplorable.filters.each_pair do |f, a|
+        ActsAsExplorable.filters[f].map!(&:downcase)
       end
 
-      ActsAsExplorable.type_filters
+      ActsAsExplorable.filters
     end
   end
 end
