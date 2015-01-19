@@ -21,10 +21,11 @@ module ActsAsExplorable
     # @param [String] query_string A query string
     # @return [ActiveRecord::Relation] Returns an <tt>ActiveRecord::Relation</tt> scope object
     #
-    def search(query_string)
+    def search(query_string = '')
+      return self unless query_string.present?
       parts = ActsAsExplorable.filters.keys.map { |t| Element.build(t, query_string, self) }
 
-      result = all
+      result = self
 
       parts.compact.each do |part|
         result = part.execute(result)

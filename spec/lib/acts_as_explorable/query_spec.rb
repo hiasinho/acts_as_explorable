@@ -9,6 +9,11 @@ describe ActsAsExplorable::Query do
   let(:toni) { create(:toni) }
   let(:fernando) { create(:fernando) }
 
+  it "should return all if no query given" do
+    [zlatan, bastian, christiano, toni, fernando]
+    expect(Player.search('').count).to eq(5)
+  end
+
   context 'in:' do
     it '`first_name` should find by first name' do
       [zlatan, christiano]
